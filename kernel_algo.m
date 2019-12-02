@@ -4,11 +4,11 @@ clc; clear;
 %%%%%%  Original Data
 x = zeros(1000,1);
 y = zeros(1000,1);
-load ./my_random_points
+load ./concentric_points_data
 x = x - sum(x)/1000;
 y = y - sum(y)/1000;
 figure;
-scatter(x,y);
+scatter(x,y,2,col);
 title('My random points');
 xlabel('X');
 ylabel('Y');
@@ -39,7 +39,7 @@ for i = 1:n
     end
 end
 figure;
-scatter(score(:,1),score(:,2));
+scatter(score(:,1),score(:,2),2,col);
 xlabel('First Principal Component');
 ylabel('Second Principal Component');
 title('Second Principal Component vs First Principal Component');
