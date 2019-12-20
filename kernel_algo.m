@@ -92,25 +92,24 @@ end
 %end
 %figure;
 %plot(new_x,new_y);
-%%%%%% Method 2
-%new_x = zeros(n,1);
-%new_y = zeros(n,1);
-%for i = 1:n
-%   for counter = 1:10
-%    tempX = new_x(i); tempY = new_y(i);
-%    new_x(i) = 0; new_y(i) = 0; total = 0;
-%    for j = 1:n
-%        t = kernel([tempX,tempY]',[x(j),y(j)]');
-%        new_x(i) = new_x(i) + gamma(j)*t*x(j);
-%        new_y(i) = new_y(i) + gamma(j)*t*y(j);
-%        total = total + gamma(j)*t;
-%    end
-%    new_x(i) = new_x(i)/total;
-%    new_y(i) = new_y(i)/total;
-%   end
-%end
-%figure;
-%scatter(new_x,new_y);
+%%%%%% Visualization of Mean (Works only for Gaussian Kernel)
+new_x = 0;
+new_y = 0;
+for counter = 1:10
+   tempX = new_x; tempY = new_y;
+   new_x = 0; new_y = 0; total = 0;
+   for j = 1:n
+      t = kernel([tempX,tempY]',[x(j),y(j)]');
+      new_x = new_x + gamma(j)*t*x(j);
+      new_y = new_y + gamma(j)*t*y(j);
+      total = total + gamma(j)*t;
+   end
+   new_x = new_x/total;
+   new_y = new_y/total;
+end
+figure;
+scatter(new_x,new_y);
+title('Mean for Gaussian Kernel');
 %%%%%%% Method 3
 %new_x = zeros(n,1);
 %ew_y = zeros(n,1);
